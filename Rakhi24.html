@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raksha Bandhan Greeting</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Freestyle+Script&display=swap');
+
+        body {
+            font-family: 'Freestyle Script', cursive;
+            font-size: 22px;
+            background-color: #f4e1d2; /* Sandal background */
+            color: #d63333; /* Red font color */
+            text-align: center;
+            overflow: hidden;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        .message {
+            display: none;
+            padding: 20px;
+        }
+
+        .message.active {
+            display: block;
+        }
+
+        .btn {
+            background-color: coral;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #ff6f61;
+        }
+
+        /* Heart rain effect */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 0, 0, 0.8);
+            clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 80%, 15% 100%, 0% 35%);
+            animation: fall 7s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Messages -->
+    <div class="message active" id="message1">
+        <p>Hi Di,</p>
+        <button class="btn" onclick="nextMessage(1)">Next</button>
+    </div>
+
+    <div class="message" id="message2">                                                                               
+        <p>Dear Di,</p>
+        <p>I hope this message finds you in good health and high spirits. Just wanted to take a moment to remind you how cherished and appreciated you are. Your strength, kindness, and wisdom have always been a source of inspiration for me. No matter where life takes us, the bond we share will always hold a special place in my heart.</p>
+        <p>May you continue to shine brightly in everything you do.</p>
+        <p>With love and warmth,</p>
+        <p>Raksha Bandhan</p>
+        <button class="btn" onclick="nextMessage(2)">Next</button>
+    </div>
+
+    <div class="message" id="message3">
+        <p style="font-size: 2.5em;">HAPPY RAKSHA BANDHAN TO MY CUTE DI 🩷</p>
+    </div>
+
+    <!-- Heart rain effect -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 5 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+        setInterval(createHeart, 300);
+
+        function nextMessage(current) {
+            document.getElementById(`message${current}`).classList.remove('active');
+            document.getElementById(`message${current + 1}`).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
